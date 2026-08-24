@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioStudy Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4fbf6;color:#173b2a}
+header{background:linear-gradient(135deg,#0b7a4b,#18a866);color:white;padding:18px 20px;position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:24px;font-weight:800}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav button{background:transparent;border:0;color:white;padding:9px 10px;border-radius:8px;cursor:pointer}
+nav button:hover{background:#ffffff22}
+.hero{max-width:1100px;margin:25px auto;padding:45px 25px;border-radius:20px;background:linear-gradient(135deg,#dff8e9,#f7fffa);text-align:center}
+.hero h1{font-size:42px;margin-bottom:10px;color:#096b41}
+.hero p{font-size:18px;margin-bottom:20px;color:#426253}
+.search{max-width:650px;margin:auto;display:flex;gap:8px}
+.search input{flex:1;padding:14px;border:1px solid #b9d9c6;border-radius:10px;font-size:16px}
+.search button,.card button{background:#0b7a4b;color:white;border:0;padding:12px 16px;border-radius:9px;cursor:pointer}
+main{max-width:1100px;margin:auto;padding:10px 20px 40px}
+h2{margin:25px 0 15px;color:#096b41}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.card{background:white;padding:20px;border-radius:15px;box-shadow:0 4px 15px #0b7a4b15;border:1px solid #e0eee5}
+.card h3{margin-bottom:8px}.card p{color:#60766a;margin-bottom:15px;line-height:1.5}
+.section{display:none}.section.active{display:block}
+.note{background:#fff;border-left:5px solid #18a866;padding:16px;border-radius:10px;margin:10px 0;line-height:1.6}
+.quiz{background:white;padding:20px;border-radius:15px;box-shadow:0 4px 15px #0b7a4b15}
+.option{display:block;width:100%;text-align:left;background:#f0f8f3;border:1px solid #cfe5d7;padding:12px;margin:8px 0;border-radius:8px;cursor:pointer}
+.option:hover{background:#dff3e7}
+footer{text-align:center;padding:25px;background:#123d2b;color:white;margin-top:20px}
+@media(max-width:650px){.nav{flex-direction:column}.hero h1{font-size:32px}.search{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<div class="logo">🧬 BioStudy Hub</div>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('notes')">Notes</button>
+<button onclick="show('classes')">Classes</button>
+<button onclick="show('neet')">NEET</button>
+<button onclick="show('nseb')">NSEB</button>
+<button onclick="show('quiz')">MCQ</button>
+<button onclick="show('pyq')">PYQ</button>
+</nav>
+</div>
+</header>
+
+<section id="home" class="section active">
+<div class="hero">
+<h1>Learn Biology Smarter 🧬</h1>
+<p>Notes, concepts, MCQs and exam preparation — all in one place.</p>
+<div class="search">
+<input id="searchBox" placeholder="Search Biology topics..." oninput="searchSite()">
+<button onclick="searchSite()">Search</button>
+</div>
+</div>
+<main>
+<h2>Explore BioStudy Hub</h2>
+<div class="grid" id="searchResults">
+<div class="card"><h3>📖 Notes</h3><p>Chapter-wise Biology notes and quick revision points.</p><button onclick="show('notes')">Open Notes</button></div>
+<div class="card"><h3>📝 MCQ Tests</h3><p>Practice Biology questions and check your score.</p><button onclick="show('quiz')">Start Quiz</button></div>
+<div class="card"><h3>🔬 NSEB</h3><p>Prepare Biology concepts for NSEB.</p><button onclick="show('nseb')">Explore</button></div>
+<div class="card"><h3>🩺 NEET Biology</h3><p>Important topics and revision resources.</p><button onclick="show('neet')">Explore</button></div>
+</div>
+</main>
+</section>
+
+<main>
+<section id="notes" class="section">
+<h2>📚 Biology Notes</h2>
+<div class="grid">
+<div class="card"><h3>Cell: The Unit of Life</h3><p>Cell structure, organelles and functions.</p><button onclick="alert('Notes: Cell is the basic structural and functional unit of life.')">Read Notes</button></div>
+<div class="card"><h3>Biomolecules</h3><p>Carbohydrates, proteins, lipids and nucleic acids.</p><button onclick="alert('Notes: Biomolecules are organic molecules essential for life.')">Read Notes</button></div>
+<div class="card"><h3>Genetics</h3><p>Mendelian genetics, inheritance and variation.</p><button onclick="alert('Notes: Genetics is the study of heredity and variation.')">Read Notes</button></div>
+<div class="card"><h3>Human Physiology</h3><p>Digestion, breathing, circulation and more.</p><button onclick="alert('Notes: Human physiology studies the functions of the human body.')">Read Notes</button></div>
+</div>
+</section>
+
+<section id="classes" class="section">
+<h2>📚 Classes</h2>
+<div class="grid">
+<div class="card"><h3>Class 11 Biology</h3><p>Cell Biology, Plant Physiology, Human Physiology and more.</p></div>
+<div class="card"><h3>Class 12 Biology</h3><p>Reproduction, Genetics, Biotechnology, Ecology and more.</p></div>
+</div>
+</section>
+
+<section id="neet" class="section">
+<h2>🩺 NEET Biology</h2>
+<div class="note"><b>Focus:</b> NCERT concepts, diagrams, important facts and regular MCQ practice.</div>
+<div class="grid">
+<div class="card"><h3>Botany</h3><p>Plant physiology, morphology, anatomy and ecology.</p></div>
+<div class="card"><h3>Zoology</h3><p>Human physiology, animal diversity, genetics and evolution.</p></div>
+</div>
+</section>
+
+<section id="nseb" class="section">
+<h2>🔬 NSEB Preparation</h2>
+<div class="note"><b>Tip:</b> Build strong conceptual Biology knowledge and practice higher-level questions.</div>
+<div class="grid">
+<div class="card"><h3>Concept Building</h3><p>Cell biology, genetics, molecular biology and physiology.</p></div>
+<div class="card"><h3>Practice</h3><p>Use MCQs and previous-year questions for regular practice.</p></div>
+</div>
+</section>
+
+<section id="quiz" class="section">
+<h2>📝 Biology MCQ Quiz</h2>
+<div class="quiz">
+<h3 id="question">Which organelle is known as the powerhouse of the cell?</h3>
+<button class="option" onclick="answer(false)">A. Ribosome</button>
+<button class="option" onclick="answer(true)">B. Mitochondria</button>
+<button class="option" onclick="answer(false)">C. Golgi apparatus</button>
+<button class="option" onclick="answer(false)">D. Lysosome</button>
+<p id="result" style="margin-top:15px;font-weight:bold"></p>
+</div>
+</section>
+
+<section id="pyq" class="section">
+<h2>📖 PYQ</h2>
+<div class="grid">
+<div class="card"><h3>Biology PYQ</h3><p>Previous-year questions can be organized here chapter-wise.</p></div>
+<div class="card"><h3>Topic-wise PYQ</h3><p>Genetics • Cell Biology • Ecology • Human Physiology</p></div>
+</div>
+</section>
+</main>
+
+<footer>© 2026 BioStudy Hub • Learn Biology Smarter 🧬</footer>
+
+<script>
+function show(id){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function answer(correct){
+ document.getElementById('result').textContent=correct?'✅ Correct!':'❌ Incorrect. Correct answer: Mitochondria';
+}
+function searchSite(){
+ const q=document.getElementById('searchBox').value.toLowerCase().trim();
+ if(!q){return;}
+ const words=['notes','cell','biomolecules','genetics','human physiology','neet','nseb','quiz','pyq'];
+ const found=words.some(w=>w.includes(q)||q.includes(w));
+ if(found){document.getElementById('searchResults').scrollIntoView({behavior:'smooth'});}
+ else{alert('No matching topic found. Try: notes, genetics, cell, NEET, NSEB, quiz');}
+}
+</script>
+</body>
+</html>
